@@ -1,0 +1,13 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: cmyes_development
+  username: root
+  password: 
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: cmyes_test
+  username: root
+  password: 

@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{:name => 'verify-v1', :content => 'OVdAyzJx6PDmEiX5cn5qanT1WqVuLlTCdNjnpL7vwxg='}/
+    %title= @page_title || @page.try(:title) || controller.action_name.titleize
+    = stylesheet_link_tag 'application.css'
+  %body
+    %h2 Application Layout Header
+    = link_to "Login to CMS Admin", comatose_admin_path, :target => "_blank"
+    (username and password is "cms")
+    %hr
+    - if @page
+      %h3 Navigation
+      %p Displays children of this page.  If there are no children, lists self and siblings.
+      %ul
+        - if @page.children.empty?
+          - @page.parent.children.each do |child|
+            %li= link_to child.title, child.uri
+        - else
+          - @page.children.each do |child|
+            %li= link_to child.title, child.uri
+      %hr
+      %h3 Breadcrumbs
+      %p
+        = @page.ancestors.reverse.collect {|c| link_to c.title, c.uri }.join(' > ')
+        = "> #{@page.title}"
+      %hr
+      %h2= @page.title
+    = yield
+    %hr
+    %h2 Application Layout Footer

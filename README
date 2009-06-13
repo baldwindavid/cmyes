@@ -1,0 +1,7 @@
+CMYES DEMO APP
+==============
+
+- rake gems:install
+- rake db:create (or whatever you sqlite people do)
+- rake db:migrate
+- rake cmyes:setup

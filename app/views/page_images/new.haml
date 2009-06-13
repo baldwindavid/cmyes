@@ -1,0 +1,22 @@
+%h1 Upload Image
+%p IMPORTANT: Please be sure that you clicked within the text at the position this image will be placed.
+= error_messages_for :page_image
+- form_for :page_image, :url => page_images_path, :html => {:multipart => true, :id => "new_page_image_form", :class => :xhr} do |f|
+  %p
+    = f.file_field :image
+  %p
+    Resizing Options
+    %br
+    = select_tag :resizing_options, options_for_select([["-- No Resizing --", "none"], ["1/5 width of screen", "20"], ["1/4 width of screen", "25"], ["Full width of screen", "100"], ["Custom", "custom"]])
+  %p#image_dimension_input
+    Image Dimensions
+    %br
+    Width
+    = f.text_field :image_width, :style => "width: 30px;"
+    x
+    Height
+    = f.text_field :image_height, :style => "width: 30px;"
+  
+  = f.submit "Upload", :id => "something_else", :name => "other_stuff"
+  
+#page_image_upload_result

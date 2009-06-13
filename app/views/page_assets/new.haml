@@ -1,0 +1,10 @@
+%h1 Upload File
+%p IMPORTANT: Please be sure that you clicked within the text at the position this image will be placed.
+= error_messages_for :page_asset
+- form_for :page_asset, :url => page_assets_path, :html => {:multipart => true, :id => "new_page_asset_form", :class => :xhr} do |f|
+  %p
+    = f.file_field :attachment
+  
+  = f.submit "Upload", :name => "upload_button"
+  
+#page_asset_upload_result

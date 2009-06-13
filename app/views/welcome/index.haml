@@ -1,0 +1,6 @@
+%p This page is not managed by the CMS, but uses the same layout.  Start adding pages via the CMS and they will appear on this page.
+
+%p Note:  The CMS will automatically transform links that support oembed into embedded widgets.  Sites such as YouTube, Flickr, Vimeo, Viddler are supported.  (see "config/oembed_links.yml")
+  
+%ul
+  = @children.collect {|c| link_to c.title, c.full_path }.join(' | ')
